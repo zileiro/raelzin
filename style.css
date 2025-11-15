@@ -1,248 +1,63 @@
-/* --- ESTILOS GERAIS E DO CONVITE --- */
+/* --- VARIÁVEIS DE CORES --- */
 :root {
-    --cor-bege: #D3C5AA;       /* Bege principal */
-    --cor-bege-hover: #bdae95; /* Bege mais escuro */
-    --cor-titulos: #413a30;    /* Marrom escuro para o texto */
-    --cor-fundo-claro: #fdfaf5; /* Fundo branco quente */
+    --cor-bege: #D3C5AA;
+    --cor-bege-hover: #bdae95;
+    --cor-titulos: #413a30;
+    --cor-fundo-claro: #fdfaf5;
 }
 
+/* RESET */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* 🔥 impede rolagem da página */
-    overflow-x: hidden; /* 🔥 impede rolagem da página */
 }
 
 body {
+    background: #FFFAF1;
+    font-family: "Montserrat", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #FFFAF1;
-    font-family: "Montserrat", sans-serif;
-    overflow: hidden; /* 🔥 impede rolagem da página */
+    overflow-x: hidden;
 }
 
-.backgrounde{
-    display: none;
-}
-
+/* --- CONVITE --- */
 .convite {
     position: relative;
-    width: 100%;        /* ocupa toda largura da tela */
-    max-width: 700px;   /* limite no desktop */
+    width: 100%;
+    max-width: 800px;
 }
 
 .convite img {
     width: 100%;
-    height: 105vh;       /* 🔥 aumenta um pouco além da tela */
-    object-fit: contain; /* mostra a imagem inteira sem cortar */
-    display: block;
-    border-radius: 0;
-    box-shadow: none;
+    height: 100vh;
+    object-fit: cover;
 }
-
 
 .btn {
     position: absolute;
-    bottom: 150px; /* 🔥 antes era 20px, subi mais */
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
     appearance: none;
     border: 0;
     background: var(--cor-bege);
     color: var(--cor-titulos);
-    padding: 12px 20px;
-    border-radius: 10px;
+    padding: 14px 22px;
+    border-radius: 12px;
     font-weight: 700;
-    letter-spacing: 0.6px;
     cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 6px 18px rgba(47, 111, 138, 0.18);
-    transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
-.btn:hover { background: var(--cor-bege-hover); transform: translate(-50%, -2px); box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15); }
-.btn:active { transform: translate(-50%, 0); }
+.btn:hover {
+    background: var(--cor-bege-hover);
+}
 
-/* =========================================== */
-/* --- AJUSTES FINAIS DE RESPONSIVIDADE --- */
-/* =========================================== */
-
-
-
-/* --- ESTILOS DO MODAL (POP-UP) --- */
+/* --- MODAL --- */
 .modal-overlay {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: none; /* JS vai mudar para 'flex' */
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-.modal-overlay.visible {
-    display: flex;
-}
-
-.modal-content {
-    background: var(--cor-fundo-claro); /* Usa o fundo branco quente */
-    padding: 25px 30px;
-    border-radius: 15px;
-    max-width: 550px;
-    width: 90%;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
-    font-family: 'Lora', serif;
-}
-.modal-content h2 { 
-    font-family: 'Montserrat', sans-serif; 
-    text-align: center; 
-    color: var(--cor-titulos); /* <-- CORREÇÃO */
-    margin-bottom: 20px; 
-}
-.modal-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #aaa;
-}
-.modal-step { display: none; }
-.modal-step.active { display: block; }
-
-/* Formulário */
-.campo-form { margin-bottom: 20px; }
-.campo-form label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
-.campo-form input[type="text"], .campo-form input[type="number"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: 'Lora', serif; }
-.botoes-opcionais { display: flex; gap: 10px; margin-bottom: 20px; }
-.btn-adicionar { background: #f0f0f0; border: 1px solid #ddd; padding: 10px; border-radius: 8px; cursor: pointer; flex-grow: 1; }
-.acompanhante-dinamico { border-top: 1px dashed #ccc; padding-top: 15px; }
-.acompanhante-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.btn-remover { background: #ffdddd; border: 1px solid #ffb8b8; color: #c53030; border-radius: 5px; cursor: pointer; padding: 2px 8px; }
-.campo-criancas { display: none; }
-.contador { display: flex; align-items: center; justify-content: center; gap: 15px; }
-.btn-contador { 
-    width: 30px; 
-    height: 30px; 
-    border-radius: 50%; 
-    border: 1px solid var(--cor-bege); /* <-- CORREÇÃO */
-    background: white; 
-    color: var(--cor-titulos); /* <-- CORREÇÃO */
-    font-size: 1.2rem; 
-    cursor: pointer; 
-}
-
-/* Botão Principal do Modal */
-.btn-principal {
-    display: block; 
-    width: 100%; 
-    background: var(--cor-bege); /* <-- CORREÇÃO */
-    color: var(--cor-titulos);      /* <-- CORREÇÃO */
-    border: none; 
-    padding: 15px; 
-    border-radius: 8px; 
-    font-weight: 700; 
-    font-size: 1rem; 
-    cursor: pointer; 
-    transition: background-color 0.2s;
-}
-.btn-principal:hover { background: var(--cor-bege-hover); }
-
-/* Lista de Presentes */
-#gift-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-.item-presente {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: var(--sombra-suave);
-    text-align: center;
-    overflow: hidden;
-    border: 1px solid #f0e9dd; /* Borda sutil para mais destaque */
-}
-
-.item-presente.esgotado { opacity: 0.5; }
-.gift-image {
-    width: 100%;
-    height: 150px;
-    object-fit: contain; /* ALTERADO: Garante que a imagem inteira apareça */
-    background-color: #fafafa; /* Fundo caso a imagem seja transparente */
-}
-.gift-info { padding: 15px; }
-.gift-info h3 { font-size: 1rem; margin: 0 0 10px; }
-.btn-presentear { 
-    background: var(--cor-bege); /* <-- CORREÇÃO */
-    color: var(--cor-titulos);      /* <-- CORREÇÃO */
-    border: none; 
-    padding: 8px 12px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-}
-.btn-presentear:disabled { background: #ccc; }
-
-/* Agradecimento */
-.thank-you-content { text-align: center; }
-.thank-you-content .fa-heart { 
-    color: var(--cor-bege); /* <-- CORREÇÃO */
-    font-size: 4rem; 
-    margin-bottom: 20px; 
-}
-
-/* --- DESTAQUE PARA A LISTA DE PRESENTES NO MODAL --- */
-#modal-step-2 {
-    background-color: #f3efe7; /* Um tom de off-white/bege bem suave */
-    padding: 25px;
-    margin: -30px -40px; /* Compensa o padding do .modal-content */
-    border-radius: 10px;
-}
-
-#modal-step-2 h2 {
-    margin-top: 10px; /* Adiciona um respiro acima do título */
-}
-
-
-/* Aplica a todos os dispositivos com largura de tela até 768px (tablets e celulares) */
-@media (max-width: 768px) {
-    /* --- Ajustes no Convite e Botão --- */
-    .convite img {
-        width: 100%;
-        height: 95vh;
-        object-fit: cover ; /* Garante que a imagem sempre cubra a tela */
-        margin-left: -1%;
-        zoom: 0.9;
-    }
-
-    .btn {
-        width: 80%; /* Ocupa 80% da largura da tela */
-        max-width: 350px; /* Limite para não ficar gigante em tablets */
-        height: auto; /* Altura automática baseada no padding */
-        padding: 18px 25px; /* Padding interno para o botão */
-        bottom: 12%; /* Posição a partir do fundo da tela */
-        font-size: 1.1rem;
-    }
-
-    /* --- Ajustes nos Cards de Presente --- */
-    #gift-container {
-        grid-template-columns: 1fr; /* Força uma única coluna */
-        gap: 25px; /* Espaçamento entre os cards */
-    }
-
-    .gift-image {
-        height: auto; /* Remove a altura fixa */
-        aspect-ratio: 4 / 3; /* Mantém a proporção da imagem (4:3) */
-        object-fit: contain; /* Garante que a imagem inteira apareça */
-    }
-
-    .item-presente {
-        box-shadow: 0 6px 18px rgba(0,0,0,0.12); /* Sombra mais forte para destacar */
-    }
-
-    /* --- Ajustes Gerais do Layout Antigo (se ainda estiver usando) --- */
-
-}
+    left: 0
