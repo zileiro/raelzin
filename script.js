@@ -21,11 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const giftContainer = document.getElementById("gift-container");
   const mensagemFinal = document.getElementById("thank-you-message");
 
-  // CAMPOS NOVOS
   const btnAddAcompanhante = document.getElementById("btnAddAcompanhante");
   const acompanhantesContainer = document.getElementById("acompanhantes-container");
 
-  const btnAddCriancas = document.getElementById("btnAddCriancas");
   const btnMenosCriancas = document.getElementById("btn-diminuir-criancas");
   const btnMaisCriancas = document.getElementById("btn-aumentar-criancas");
   const qtdCriancasSpan = document.getElementById("qtd-criancas");
@@ -56,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnAddAcompanhante.addEventListener("click", () => {
     const div = document.createElement("div");
     div.classList.add("campo-form");
-    
+
     const id = Math.random().toString(36).substring(2, 9);
 
     div.innerHTML = `
@@ -66,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     acompanhantesContainer.appendChild(div);
   });
 
-  // ADICIONAR CRIANÇAS
+  // CRIANÇAS
   btnMaisCriancas.addEventListener("click", () => {
     criancas++;
     qtdCriancasSpan.innerText = criancas;
@@ -88,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!nomeConvidado) return alert("Digite seu nome!");
 
-    // CAPTURA ACOMPANHANTES
     acompanhantes = [...document.querySelectorAll(".acomp-input")]
       .map(i => i.value.trim())
       .filter(v => v.length > 0);
@@ -97,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carregarPresentes();
   });
 
-  // CARREGAR PRESENTES
+  // PRESENTES
   function carregarPresentes() {
     giftContainer.innerHTML = "<p>Carregando presentes...</p>";
 
@@ -130,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         item.innerHTML = `
           <div class="gift-card">
-            <img src="${p.imageUrl || "https://via.placeholder.com/200"}">
+            <img src="${p.imageUrl}">
             <h3>${p.nome}</h3>
             <button class="btn-presentear" data-id="${p.id}" data-nome="${p.nome}">
               Presentear
@@ -167,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       t.update(ref, { quantidade: novaQtd });
 
-      // SALVAR CONVIDADO COMPLETO
       t.set(db.collection("convidados").doc(), {
         nome: nomeConvidado,
         acompanhantes: acompanhantes,
@@ -180,13 +176,12 @@ document.addEventListener("DOMContentLoaded", () => {
         mensagemFinal.innerHTML = `
           <p><strong>${nomeConvidado}</strong>, presença confirmada!</p>
           <p>Presente escolhido: <strong>${nomePresente}</strong></p>
-          <p>Convidados adicionais: <strong>${acompanhantes.join(", ") || "Nenhum"}</strong></p>
+          <p>Acompanhantes: <strong>${acompanhantes.join(", ") || "Nenhum"}</strong></p>
           <p>Crianças: <strong>${criancas}</strong></p>
         `;
         showModalStep(3);
       })
       .catch(() => alert("Erro ao confirmar seu presente."));
-
   }
 
 });
