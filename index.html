@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Bebê do Rael</title>
+
     <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -17,24 +20,33 @@
         <button class="btn" id="btnShowRsvp">CONFIRMAR PRESENÇA</button>
     </div>
 
+    <!-- MODAL -->
     <div id="rsvp-modal" class="modal-overlay">
         <div class="modal-content">
+
             <button class="modal-close" id="modal-close-btn">×</button>
-            
+
+            <!-- PASSO 1 -->
             <div id="modal-step-1" class="modal-step active">
                 <form id="rsvp-form">
                     <h2>Confirmação de Presença</h2>
+
                     <div class="campo-form">
                         <label for="nome-convidado">Seu nome:</label>
                         <input type="text" id="nome-convidado" required>
                     </div>
+
                     <div class="botoes-opcionais">
-                        <button type="button" class="btn-adicionar" id="btnAddAcompanhante"><i class="fa-solid fa-user-plus"></i> Adicionar Acompanhante</button>
-                        <button type="button" class="btn-adicionar" id="btnAddCriancas"><i class="fa-solid fa-child"></i> Adicionar Crianças</button>
+                        <button type="button" class="btn-adicionar" id="btnAddAcompanhante">
+                            <i class="fa-solid fa-user-plus"></i> Adicionar Acompanhante
+                        </button>
+                        <button type="button" class="btn-adicionar" id="btnAddCriancas">
+                            <i class="fa-solid fa-child"></i> Adicionar Crianças
+                        </button>
                     </div>
-                    
+
                     <div id="acompanhantes-container"></div>
-                    
+
                     <div class="campo-form campo-criancas">
                         <label>Número de crianças:</label>
                         <div class="contador">
@@ -47,13 +59,14 @@
                     <button type="submit" class="btn-principal">Continuar</button>
                 </form>
             </div>
-            
+
+            <!-- PASSO 2 -->
             <div id="modal-step-2" class="modal-step">
-  <h2>Sugestões de Presentes</h2>
-  <div id="gift-container"></div>
-</div>
+                <h2>Sugestões de Presentes</h2>
+                <div id="gift-container"></div>
+            </div>
 
-
+            <!-- PASSO 3 -->
             <div id="modal-step-3" class="modal-step">
                 <div class="thank-you-content">
                     <i class="fa-solid fa-heart"></i>
@@ -62,10 +75,13 @@
                     <button class="btn-principal" id="btn-final-close">Fechar</button>
                 </div>
             </div>
+
         </div>
     </div>
+
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
