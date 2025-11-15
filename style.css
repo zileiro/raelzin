@@ -32,8 +32,8 @@ body {
 
 .convite img {
     width: 100%;
-    height: 100vh;
-    object-fit: cover;
+    height: auto;
+    display: block;
 }
 
 .btn {
@@ -69,6 +69,12 @@ body {
     justify-content: center;
     z-index: 9999;
 }
+
+/* CORREÇÃO QUE FALTAVA */
+.modal-overlay.visible {
+    display: flex !important;
+}
+
 .modal-content {
     background: var(--cor-fundo-claro);
     padding: 25px 30px;
@@ -78,4 +84,126 @@ body {
     max-height: 85vh;
     overflow-y: auto;
     position: relative;
+}
+
+/* PASSOS DO MODAL */
+.modal-step {
+    display: none;
+}
+.modal-step.active {
+    display: block;
+}
+
+/* CAMPOS DO FORMULÁRIO */
+.campo-form {
+    margin-bottom: 15px;
+}
+
+.campo-form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.botoes-opcionais {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.btn-adicionar {
+    background: var(--cor-bege);
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-adicionar:hover {
+    background: var(--cor-bege-hover);
+}
+
+/* CONTADOR DE CRIANÇAS */
+.contador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-contador {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--cor-bege);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.btn-contador:hover {
+    background: var(--cor-bege-hover);
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-principal {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background: var(--cor-bege);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.btn-principal:hover {
+    background: var(--cor-bege-hover);
+}
+
+/* PRESENTES */
+.gift-item {
+    margin-bottom: 20px;
+}
+
+.gift-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.gift-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.btn-presentear {
+    margin-top: 10px;
+    padding: 10px 16px;
+    background: var(--cor-bege);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-presentear:hover {
+    background: var(--cor-bege-hover);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
 }
